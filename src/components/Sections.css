@@ -1,0 +1,521 @@
+.editorial-content-wrapper {
+  background-color: var(--bg-studio);
+  position: relative;
+  z-index: 20;
+}
+
+/* Reusable Animated Editorial Divider */
+.editorial-divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--border-light);
+  transform-origin: left;
+  will-change: transform;
+}
+
+/* Masking Utilities for Editorial Headline Rise */
+.editorial-mask {
+  display: inline-flex;
+  overflow: hidden;
+  vertical-align: bottom;
+  line-height: 1.15;
+}
+
+.editorial-mask-inner {
+  display: inline-block;
+  will-change: transform;
+}
+
+.editorial-section {
+  padding: 100px 48px;
+  position: relative;
+}
+
+.section-container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.section-header {
+  margin-bottom: 48px;
+}
+
+.section-number {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  font-weight: 700;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 12px;
+  will-change: transform, opacity;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.8rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-dark);
+  text-transform: uppercase;
+  margin: 0;
+  will-change: transform;
+}
+
+/* 01 / SECTION TENTANG */
+.section-tentang {
+  background-color: rgba(12, 12, 12, 0.02);
+}
+
+.tentang-content-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.statement-large {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 2.1rem);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  color: var(--text-dark);
+  will-change: transform, opacity;
+}
+
+.tentang-paragraph {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-charcoal);
+  margin-bottom: 32px;
+  will-change: transform, opacity;
+}
+
+.specs-divider {
+  margin-bottom: 24px;
+}
+
+.tentang-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  will-change: transform, opacity;
+}
+
+.spec-item:hover {
+  transform: translateX(6px);
+}
+
+.spec-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--text-subtle);
+  text-transform: uppercase;
+}
+
+.spec-value {
+  font-size: 0.925rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+/* 01.1 / EDUCATION BLOCK */
+.tentang-education-wrap {
+  margin-top: 84px;
+}
+
+.education-divider {
+  margin-bottom: 48px;
+}
+
+.education-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.education-period-large {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.6vw, 3.2rem);
+  font-weight: 800;
+  color: var(--text-dark);
+  display: block;
+  margin-top: 12px;
+  letter-spacing: -0.03em;
+}
+
+.education-school-badge {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.education-school-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  font-weight: 800;
+  color: var(--text-dark);
+  letter-spacing: -0.02em;
+}
+
+.education-major-tag {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-red);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.education-statement {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-charcoal);
+  margin-bottom: 24px;
+}
+
+.education-skills-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-pill {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 6px 14px;
+  border: 1px solid var(--border-medium);
+  border-radius: 99px;
+  color: var(--text-dark);
+  background-color: rgba(12, 12, 12, 0.03);
+  transition: all 0.25s ease;
+}
+
+.skill-pill:hover {
+  border-color: var(--text-dark);
+  background-color: rgba(12, 12, 12, 0.08);
+  transform: translateY(-1px);
+}
+
+/* 02 / KARYA FULLSCREEN SECTION */
+.section-karya-fullscreen {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 650px;
+  overflow: hidden;
+  background-color: var(--bg-studio);
+}
+
+.karya-header-overlay {
+  position: absolute;
+  top: 48px;
+  left: 48px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.karya-header-overlay .section-number {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  font-weight: 700;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.karya-overlay-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-dark);
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin: 0;
+}
+
+/* 03 / SECTION DRIFT WALL */
+.section-driftwall {
+  position: relative;
+  width: 100%;
+  padding-top: 84px;
+  padding-bottom: 50px;
+  background-color: var(--bg-studio);
+  overflow: hidden;
+}
+
+.driftwall-header-wrap {
+  margin-bottom: 28px;
+}
+
+.driftwall-stage {
+  position: relative;
+  width: 100%;
+  height: 580px;
+  overflow: hidden;
+  will-change: transform, opacity;
+}
+
+/* 04 / SECTION KONTAK */
+.section-kontak {
+  background-color: rgba(12, 12, 12, 0.03);
+}
+
+.kontak-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: start;
+}
+
+.kontak-narrative {
+  display: flex;
+  flex-direction: column;
+}
+
+.kontak-details-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-top: 48px;
+  border-top: 1px solid var(--border-light);
+  padding-top: 36px;
+}
+
+.kontak-detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.kontak-direct-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  transition: all 0.25s ease;
+}
+
+.kontak-direct-link:hover {
+  color: var(--accent-red);
+  transform: translateX(4px);
+}
+
+.kontak-form-card {
+  background-color: rgba(255, 255, 255, 0.55);
+  border: 1px solid var(--border-light);
+  padding: 40px;
+  border-radius: 4px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 16px 40px -12px rgba(12, 12, 12, 0.06);
+}
+
+.editorial-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--text-subtle);
+  text-transform: uppercase;
+}
+
+.form-input {
+  width: 100%;
+  padding: 13px 16px;
+  background-color: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--border-light);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  outline: none;
+  transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+  border-radius: 2px;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  border-color: var(--text-dark);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 1px var(--text-dark);
+}
+
+.form-select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%230c0c0c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 36px;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 105px;
+}
+
+.form-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 16px 28px;
+  background-color: var(--text-dark);
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 2px;
+  margin-top: 6px;
+}
+
+.form-submit-btn:hover {
+  background-color: var(--accent-red);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(209, 44, 38, 0.25);
+}
+
+.form-submit-btn:active {
+  transform: translateY(0);
+}
+
+.form-success-note {
+  font-size: 0.825rem;
+  color: #15803d;
+  font-weight: 600;
+  text-align: center;
+  padding: 8px 12px;
+  background-color: rgba(22, 101, 52, 0.08);
+  border-radius: 2px;
+}
+
+/* Footer */
+.editorial-footer {
+  padding: 40px 48px;
+  background-color: var(--bg-studio);
+  position: relative;
+}
+
+.footer-container {
+  max-width: 1300px;
+  margin: 32px auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  font-size: 0.95rem;
+  will-change: transform, opacity;
+}
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: var(--text-subtle);
+  will-change: transform, opacity;
+}
+
+.footer-tagline {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  will-change: transform, opacity;
+}
+
+@media (max-width: 900px) {
+  .editorial-section {
+    padding: 70px 24px;
+  }
+  .tentang-content-grid,
+  .education-grid,
+  .kontak-content-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  .karya-header-overlay {
+    top: 32px;
+    left: 24px;
+  }
+  .section-driftwall {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+  .driftwall-stage {
+    height: 480px;
+  }
+  .editorial-footer {
+    padding: 32px 24px;
+  }
+  .kontak-form-card {
+    padding: 28px 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .section-karya-fullscreen {
+    min-height: 580px;
+  }
+  .karya-header-overlay {
+    top: 24px;
+    left: 20px;
+  }
+  .driftwall-stage {
+    height: 420px;
+  }
+}

@@ -1,0 +1,102 @@
+.editorial-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(12, 12, 12, 0.45);
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.editorial-cursor-ring.is-visible {
+  opacity: 1;
+}
+
+.editorial-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--text-dark);
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.editorial-cursor-dot.is-visible {
+  opacity: 1;
+}
+
+/* Hover state on clickable links/buttons */
+.editorial-cursor-ring.hover {
+  width: 56px;
+  height: 56px;
+  background-color: rgba(12, 12, 12, 0.08);
+  border-color: rgba(12, 12, 12, 0.8);
+}
+
+.editorial-cursor-dot.hover {
+  transform: translate(-50%, -50%) scale(0);
+}
+
+/* Drag state on WebGL Carousel */
+.editorial-cursor-ring.drag {
+  width: 78px;
+  height: 78px;
+  background-color: rgba(12, 12, 12, 0.85);
+  border-color: transparent;
+  color: #ffffff;
+}
+
+.editorial-cursor-dot.drag {
+  opacity: 0;
+}
+
+/* Explore state on Drift Wall */
+.editorial-cursor-ring.explore {
+  width: 84px;
+  height: 84px;
+  background-color: rgba(12, 12, 12, 0.85);
+  border-color: transparent;
+  color: #ffffff;
+}
+
+.editorial-cursor-dot.explore {
+  opacity: 0;
+}
+
+.cursor-label {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #ffffff;
+  pointer-events: none;
+  user-select: none;
+  text-align: center;
+}
+
+/* Disable completely on mobile / touch devices */
+@media (hover: none) or (pointer: coarse), (max-width: 900px) {
+  .editorial-cursor-ring,
+  .editorial-cursor-dot {
+    display: none !important;
+  }
+}
