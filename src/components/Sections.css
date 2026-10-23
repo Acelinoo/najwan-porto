@@ -280,6 +280,7 @@
   min-height: 650px;
   overflow: hidden;
   background-color: var(--bg-studio);
+  contain: paint;
 }
 
 .karya-header-overlay {

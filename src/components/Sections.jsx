@@ -358,17 +358,17 @@ export default function Sections() {
 
       gsap.fromTo(
         '#karya .flex-carousel',
-        { scale: 0.95, opacity: 0 },
+        { opacity: 0, y: 30 },
         {
           scrollTrigger: {
             trigger: '#karya',
             ...SCROLL_REVEAL_DEFAULTS
           },
-          scale: 1,
           opacity: 1,
-          duration: 1.35,
+          y: 0,
+          duration: 1.2,
           ease: MOTION_EASE.smooth,
-          clearProps: 'scale,opacity'
+          clearProps: 'transform,opacity'
         }
       );
 
@@ -620,7 +620,6 @@ export default function Sections() {
         id="karya"
         className="section-karya-fullscreen"
         aria-label="Karya Terpilih"
-        data-lenis-prevent="true"
       >
         <div className="editorial-divider" />
         <div className="karya-header-overlay">
@@ -655,7 +654,6 @@ export default function Sections() {
         id="arsip"
         className="section-driftwall"
         aria-label="Arsip Visual Drift Wall"
-        data-lenis-prevent="true"
       >
         <div className="editorial-divider" />
         <div className="section-container driftwall-header-wrap">

@@ -1,4 +1,5 @@
 import Lenis from 'lenis';
+import 'lenis/dist/lenis.css';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -6,6 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 let lenisInstance = null;
 let tickerCallback = null;
+let anchorClickHandler = null;
 
 /**
  * Initializes Lenis smooth scrolling with GSAP ScrollTrigger synchronization.
@@ -43,12 +45,35 @@ export function initSmoothScroll() {
     gsap.ticker.add(tickerCallback);
     gsap.ticker.lagSmoothing(0);
 
+    // Smooth scroll for internal hash links (#tentang, #karya, #arsip, #kontak)
+    anchorClickHandler = (e) => {
+      const anchor = e.target.closest?.('a[href^="#"]');
+      if (!anchor) return;
+      const href = anchor.getAttribute('href');
+      if (href && href.length > 1) {
+        const targetEl = document.querySelector(href);
+        if (targetEl && lenisInstance) {
+          e.preventDefault();
+          lenisInstance.scrollTo(targetEl, {
+            offset: 0,
+            duration: 1.25,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+          });
+        }
+      }
+    };
+    document.addEventListener('click', anchorClickHandler);
+
     return {
       lenis: lenisInstance,
       destroy: () => {
         if (tickerCallback) {
           gsap.ticker.remove(tickerCallback);
           tickerCallback = null;
+        }
+        if (anchorClickHandler) {
+          document.removeEventListener('click', anchorClickHandler);
+          anchorClickHandler = null;
         }
         if (lenisInstance) {
           lenisInstance.destroy();
