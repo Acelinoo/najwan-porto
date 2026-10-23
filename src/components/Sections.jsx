@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, ChevronDown } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import FlexCarousel from './FlexCarousel/FlexCarousel';
@@ -123,7 +123,27 @@ const NAJWAN_PORTFOLIO_WORKS = [
 
 export default function Sections() {
   const wrapperRef = useRef(null);
+  const [educationOpen, setEducationOpen] = useState(false);
+  const [copiedEmail, setCopiedEmail] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+
+  const toggleEducation = () => {
+    setEducationOpen((prev) => {
+      const next = !prev;
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 350);
+      return next;
+    });
+  };
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText('marchelinokurniawan321@gmail.com');
+    setCopiedEmail(true);
+    setTimeout(() => {
+      setCopiedEmail(false);
+    }, 2200);
+  };
 
   const handleContactSubmit = (e) => {
     e.preventDefault();
@@ -131,13 +151,12 @@ export default function Sections() {
     setTimeout(() => {
       setFormSubmitted(false);
       e.target.reset();
-    }, 4000);
+    }, 4500);
   };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       // --- 1. SECTION TENTANG ANIMATIONS ---
-      // Garis Divider Atas: Animasi scaleX dari 0 ke 1
       gsap.fromTo(
         '#tentang .editorial-divider',
         { scaleX: 0 },
@@ -153,7 +172,6 @@ export default function Sections() {
         }
       );
 
-      // Section Number: Slide in with tracking expansion
       gsap.fromTo(
         '#tentang .section-number',
         { x: -35, opacity: 0, letterSpacing: '0.35em' },
@@ -171,7 +189,6 @@ export default function Sections() {
         }
       );
 
-      // Section Title: Masked upward rise
       gsap.fromTo(
         '#tentang .section-title .editorial-mask-inner',
         { yPercent: 110 },
@@ -188,7 +205,6 @@ export default function Sections() {
         }
       );
 
-      // Statement large: Scale-up with soft fade
       gsap.fromTo(
         '#tentang .statement-large',
         { scale: 0.94, y: 35, opacity: 0 },
@@ -206,7 +222,6 @@ export default function Sections() {
         }
       );
 
-      // Paragraph: Upward glide
       gsap.fromTo(
         '#tentang .tentang-paragraph',
         { y: 30, opacity: 0 },
@@ -224,7 +239,6 @@ export default function Sections() {
         }
       );
 
-      // Divider sebelum specs: scaleX 0 -> 1
       gsap.fromTo(
         '#tentang .specs-divider',
         { scaleX: 0 },
@@ -240,7 +254,6 @@ export default function Sections() {
         }
       );
 
-      // Specs items: Staggered entrance from bottom right
       gsap.fromTo(
         '#tentang .spec-item',
         { x: 30, opacity: 0 },
@@ -258,33 +271,17 @@ export default function Sections() {
         }
       );
 
-      // --- 1.1 EDUCATION SUBSECTION ANIMATIONS ---
+      // --- 1.1 EDUCATION ACCORDION REVEAL ---
       gsap.fromTo(
-        '.tentang-education-wrap .education-divider',
-        { scaleX: 0 },
+        '.education-accordion',
+        { y: 25, opacity: 0 },
         {
           scrollTrigger: {
-            trigger: '.tentang-education-wrap',
-            ...SCROLL_REVEAL_DEFAULTS
-          },
-          scaleX: 1,
-          duration: MOTION_DURATION.editorial,
-          ease: MOTION_EASE.editorial,
-          clearProps: 'scaleX'
-        }
-      );
-
-      gsap.fromTo(
-        ['.education-label-col', '.education-info-col'],
-        { y: 30, opacity: 0 },
-        {
-          scrollTrigger: {
-            trigger: '.tentang-education-wrap',
+            trigger: '.education-accordion',
             ...SCROLL_REVEAL_DEFAULTS
           },
           y: 0,
           opacity: 1,
-          stagger: MOTION_STAGGER.base,
           duration: MOTION_DURATION.base,
           ease: MOTION_EASE.smooth,
           clearProps: 'all'
@@ -304,7 +301,6 @@ export default function Sections() {
       });
 
       // --- 2. SECTION KARYA ANIMATIONS ---
-      // Divider Atas Karya
       gsap.fromTo(
         '#karya .editorial-divider',
         { scaleX: 0 },
@@ -320,7 +316,6 @@ export default function Sections() {
         }
       );
 
-      // Floating Header overlay (number + title with mask)
       gsap.fromTo(
         '#karya .karya-header-overlay .section-number',
         { x: -30, opacity: 0 },
@@ -353,7 +348,6 @@ export default function Sections() {
         }
       );
 
-      // FlexCarousel container reveal
       gsap.fromTo(
         '#karya .flex-carousel',
         { scale: 0.95, opacity: 0 },
@@ -419,7 +413,6 @@ export default function Sections() {
         }
       );
 
-      // DriftWall Stage reveal
       gsap.fromTo(
         '#arsip .driftwall-stage',
         { scale: 0.96, opacity: 0 },
@@ -486,11 +479,11 @@ export default function Sections() {
       );
 
       gsap.fromTo(
-        ['.kontak-narrative', '.kontak-form-card'],
+        ['.kontak-meta-col', '.kontak-form-col'],
         { y: 35, opacity: 0 },
         {
           scrollTrigger: {
-            trigger: '.kontak-content-grid',
+            trigger: '.kontak-minimal-grid',
             ...SCROLL_REVEAL_DEFAULTS
           },
           y: 0,
@@ -599,23 +592,44 @@ export default function Sections() {
             </div>
           </div>
 
-          {/* 01.1 / EDUCATION SUBSECTION */}
-          <div className="tentang-education-wrap">
-            <div className="education-divider editorial-divider" />
-            <div className="education-grid">
-              <div className="education-label-col">
-                <span className="spec-label">PENDIDIKAN / FORMAL EDUCATION</span>
-                <span className="education-period-large">2021 — 2024</span>
+          {/* 01.1 / EDUCATION ACCORDION DROPDOWN */}
+          <div className="education-accordion">
+            <button
+              type="button"
+              className={`education-accordion-trigger ${educationOpen ? 'is-open' : ''}`}
+              onClick={toggleEducation}
+              aria-expanded={educationOpen}
+              aria-controls="education-accordion-content"
+            >
+              <div className="education-trigger-left">
+                <span className="education-mono-tag">(PENDIDIKAN FORMAL)</span>
+                <span className="education-trigger-school">SMK Yadika Soreang</span>
+                <span className="education-trigger-period">2021 — 2024</span>
               </div>
-              <div className="education-info-col">
-                <div className="education-school-badge">
-                  <h3 className="education-school-name">SMK Yadika Soreang</h3>
-                  <span className="education-major-tag">Software Engineering / Rekayasa Perangkat Lunak</span>
+              <div className="education-trigger-right">
+                <span className="education-trigger-state">
+                  {educationOpen ? 'TUTUP' : 'LIHAT DETAIL'}
+                </span>
+                <ChevronDown
+                  size={18}
+                  className={`education-chevron ${educationOpen ? 'is-rotated' : ''}`}
+                />
+              </div>
+            </button>
+
+            <div
+              id="education-accordion-content"
+              className={`education-accordion-body ${educationOpen ? 'is-open' : ''}`}
+            >
+              <div className="education-accordion-inner">
+                <div className="education-expanded-major">
+                  <span className="spec-label">JURUSAN / MAJOR</span>
+                  <p className="education-major-val">Software Engineering / Rekayasa Perangkat Lunak</p>
                 </div>
-                <p className="education-statement">
+                <p className="education-expanded-desc">
                   Started my formal journey in software engineering through vocational education, building foundational skills in programming and web development.
                 </p>
-                <div className="education-skills-pills">
+                <div className="education-expanded-tags">
                   <span className="skill-pill">Programming Fundamentals</span>
                   <span className="skill-pill">Web Development</span>
                   <span className="skill-pill">Software Engineering</span>
@@ -634,7 +648,6 @@ export default function Sections() {
         data-lenis-prevent="true"
       >
         <div className="editorial-divider" />
-        {/* Floating Minimalist Editorial Header */}
         <div className="karya-header-overlay">
           <span className="section-number">02 / KARYA</span>
           <h2 className="karya-overlay-title">
@@ -702,106 +715,114 @@ export default function Sections() {
         </div>
       </section>
 
-      {/* 04 / SECTION KONTAK */}
+      {/* 04 / SECTION KONTAK (Desain Eksak Sesuai Gambar 1) */}
       <section id="kontak" className="editorial-section section-kontak" aria-label="Kontak dan Kolaborasi">
         <div className="editorial-divider" />
         <div className="section-container">
-          <div className="section-header">
-            <span className="section-number">04 / KONTAK</span>
-            <h2 className="section-title">
-              <span className="editorial-mask">
-                <span className="editorial-mask-inner">MARI MEMULAI KOLABORASI</span>
-              </span>
-            </h2>
-          </div>
+          <div className="kontak-minimal-grid">
+            {/* Kolom Kiri: (EMAIL) & (ELSEWHERE) */}
+            <div className="kontak-meta-col">
+              <div className="kontak-meta-group">
+                <span className="kontak-mono-tag">(EMAIL)</span>
+                <button
+                  type="button"
+                  className="kontak-email-btn"
+                  onClick={handleCopyEmail}
+                  title="Klik untuk menyalin email"
+                >
+                  <span className="kontak-email-val">marchelinokurniawan321@gmail.com</span>
+                </button>
+                <span className="kontak-copy-hint" onClick={handleCopyEmail}>
+                  {copiedEmail ? 'Copied to clipboard.' : 'Click to copy.'}
+                </span>
+              </div>
 
-          <div className="kontak-content-grid">
-            <div className="kontak-narrative">
-              <p className="statement-large">
-                "Punya proyek editorial, kampanye fashion, atau lookbook yang ingin dihidupkan? Mari wujudkan narasi visual berkarakter bersama."
-              </p>
-
-              <div className="kontak-details-list">
-                <div className="kontak-detail-item">
-                  <span className="spec-label">EMAIL INQUIRIES</span>
-                  <a href="mailto:contact@najwan.photo" className="kontak-direct-link">
-                    contact@najwan.photo
-                    <ArrowUpRight size={16} />
+              <div className="kontak-meta-group elsewhere-spacing">
+                <span className="kontak-mono-tag">(ELSEWHERE)</span>
+                <nav className="kontak-social-stack" aria-label="Media Sosial">
+                  <a
+                    href="https://github.com/Acelinoo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="kontak-social-item"
+                  >
+                    GitHub
                   </a>
-                </div>
-                <div className="kontak-detail-item">
-                  <span className="spec-label">LOKASI STUDIO</span>
-                  <span className="spec-value">Bandung & Jakarta, Indonesia (Available Worldwide)</span>
-                </div>
-                <div className="kontak-detail-item">
-                  <span className="spec-label">INSTAGRAM</span>
-                  <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" className="kontak-direct-link">
-                    @najwan.photo
-                    <ArrowUpRight size={16} />
+                  <a
+                    href="https://instagram.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="kontak-social-item"
+                  >
+                    Instagram
                   </a>
-                </div>
+                  <a
+                    href="https://tiktok.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="kontak-social-item"
+                  >
+                    TikTok
+                  </a>
+                  <a
+                    href="https://spotify.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="kontak-social-item"
+                  >
+                    Spotify
+                  </a>
+                </nav>
               </div>
             </div>
 
-            <div className="kontak-form-card">
-              <form className="editorial-form" onSubmit={handleContactSubmit}>
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="client-name" className="form-label">NAMA LENGKAP / BRAND</label>
-                    <input
-                      type="text"
-                      id="client-name"
-                      name="name"
-                      required
-                      placeholder="e.g. Elena Rostova / Maison"
-                      className="form-input"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="client-email" className="form-label">ALAMAT EMAIL</label>
-                    <input
-                      type="email"
-                      id="client-email"
-                      name="email"
-                      required
-                      placeholder="name@company.com"
-                      className="form-input"
-                    />
-                  </div>
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="project-category" className="form-label">KATEGORI PROYEK</label>
-                  <select id="project-category" name="category" className="form-input form-select" defaultValue="editorial">
-                    <option value="editorial">Fashion & Editorial Lookbook</option>
-                    <option value="portrait">Intimate Studio Portraiture</option>
-                    <option value="commercial">Commercial & Brand Campaign</option>
-                    <option value="custom">Creative Concept Collaboration</option>
-                  </select>
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="project-message" className="form-label">PESAN & BRIEF VISUAL</label>
-                  <textarea
-                    id="project-message"
-                    name="message"
-                    rows="4"
+            {/* Kolom Kanan: Minimalist Underline Form */}
+            <div className="kontak-form-col">
+              <form className="editorial-minimal-form" onSubmit={handleContactSubmit}>
+                <div className="minimal-form-group">
+                  <label htmlFor="user-name" className="minimal-form-label">YOUR NAME</label>
+                  <input
+                    type="text"
+                    id="user-name"
+                    name="name"
                     required
-                    placeholder="Ceritakan gambaran konsep, moodboard, jadwal produksi, atau kebutuhan foto Anda..."
-                    className="form-input form-textarea"
+                    className="minimal-line-input"
+                  />
+                </div>
+
+                <div className="minimal-form-group">
+                  <label htmlFor="user-email" className="minimal-form-label">EMAIL ADDRESS</label>
+                  <input
+                    type="email"
+                    id="user-email"
+                    name="email"
+                    required
+                    className="minimal-line-input"
+                  />
+                </div>
+
+                <div className="minimal-form-group">
+                  <label htmlFor="user-project" className="minimal-form-label">TELL ME ABOUT THE PROJECT</label>
+                  <textarea
+                    id="user-project"
+                    name="project"
+                    rows="3"
+                    required
+                    className="minimal-line-input minimal-line-textarea"
                   ></textarea>
                 </div>
 
-                <button type="submit" className="form-submit-btn">
-                  <span>{formSubmitted ? 'PESAN TERKIRIM' : 'KIRIM INQUIRY'}</span>
-                  <ArrowUpRight size={18} />
-                </button>
-
-                {formSubmitted && (
-                  <p className="form-success-note">
-                    Terima kasih. Pesan Anda telah diterima, kami akan segera merespons brief Anda.
-                  </p>
-                )}
+                <div className="minimal-form-actions">
+                  <button type="submit" className="minimal-submit-btn">
+                    <span>{formSubmitted ? 'MESSAGE SENT ✓' : 'SEND INQUIRY'}</span>
+                    <ArrowUpRight size={16} />
+                  </button>
+                  {formSubmitted && (
+                    <span className="minimal-submitted-note">
+                      Thank you! Your message has been sent.
+                    </span>
+                  )}
+                </div>
               </form>
             </div>
           </div>

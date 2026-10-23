@@ -128,73 +128,137 @@
   color: var(--text-dark);
 }
 
-/* 01.1 / EDUCATION BLOCK */
-.tentang-education-wrap {
-  margin-top: 84px;
+/* 01.1 / EDUCATION ACCORDION DROPDOWN (Hemat Ruang & Rapi) */
+.education-accordion {
+  margin-top: 48px;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  padding: 4px 0;
 }
 
-.education-divider {
-  margin-bottom: 48px;
-}
-
-.education-grid {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 64px;
-  align-items: start;
-}
-
-.education-period-large {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 3.6vw, 3.2rem);
-  font-weight: 800;
-  color: var(--text-dark);
-  display: block;
-  margin-top: 12px;
-  letter-spacing: -0.03em;
-}
-
-.education-school-badge {
+.education-accordion-trigger {
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 18px;
-}
-
-.education-school-name {
-  font-family: var(--font-display);
-  font-size: clamp(1.4rem, 2.4vw, 2rem);
-  font-weight: 800;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: opacity 0.25s ease;
   color: var(--text-dark);
-  letter-spacing: -0.02em;
 }
 
-.education-major-tag {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--accent-red);
-  letter-spacing: 0.08em;
+.education-accordion-trigger:hover {
+  opacity: 0.8;
+}
+
+.education-trigger-left {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.education-mono-tag {
+  font-family: monospace, var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  color: var(--text-subtle);
   text-transform: uppercase;
 }
 
-.education-statement {
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: var(--text-charcoal);
-  margin-bottom: 24px;
+.education-trigger-school {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-dark);
 }
 
-.education-skills-pills {
+.education-trigger-period {
+  font-family: var(--font-body);
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.education-trigger-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+}
+
+.education-trigger-state {
+  font-family: monospace, var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.education-chevron {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.education-chevron.is-rotated {
+  transform: rotate(180deg);
+}
+
+.education-accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+}
+
+.education-accordion-body.is-open {
+  max-height: 320px;
+  opacity: 1;
+}
+
+.education-accordion-inner {
+  padding: 8px 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.education-expanded-major {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.education-major-val {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent-red);
+  letter-spacing: 0.02em;
+}
+
+.education-expanded-desc {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text-charcoal);
+  max-width: 850px;
+}
+
+.education-expanded-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
+  margin-top: 6px;
 }
 
 .skill-pill {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
-  padding: 6px 14px;
+  letter-spacing: 0.05em;
+  padding: 5px 12px;
   border: 1px solid var(--border-medium);
   border-radius: 99px;
   color: var(--text-dark);
@@ -205,7 +269,6 @@
 .skill-pill:hover {
   border-color: var(--text-dark);
   background-color: rgba(12, 12, 12, 0.08);
-  transform: translateY(-1px);
 }
 
 /* 02 / KARYA FULLSCREEN SECTION */
@@ -270,163 +333,197 @@
   will-change: transform, opacity;
 }
 
-/* 04 / SECTION KONTAK */
+/* 04 / SECTION KONTAK (Desain Eksak Sesuai Gambar 1) */
 .section-kontak {
-  background-color: rgba(12, 12, 12, 0.03);
+  background-color: var(--bg-studio);
+  padding: 120px 48px;
 }
 
-.kontak-content-grid {
+.kontak-minimal-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 72px;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 96px;
   align-items: start;
 }
 
-.kontak-narrative {
+/* Kolom Kiri: (EMAIL) & (ELSEWHERE) */
+.kontak-meta-col {
   display: flex;
   flex-direction: column;
 }
 
-.kontak-details-list {
+.kontak-meta-group {
   display: flex;
   flex-direction: column;
-  gap: 28px;
-  margin-top: 48px;
-  border-top: 1px solid var(--border-light);
-  padding-top: 36px;
 }
 
-.kontak-detail-item {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+.kontak-mono-tag {
+  font-family: monospace, var(--font-body);
+  font-size: 0.76rem;
+  letter-spacing: 0.16em;
+  color: var(--text-subtle);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  user-select: none;
 }
 
-.kontak-direct-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 700;
+.kontak-email-btn {
+  display: inline-block;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.kontak-email-val {
+  font-family: var(--font-body);
+  font-size: clamp(1.25rem, 2.3vw, 1.85rem);
+  font-weight: 400;
   color: var(--text-dark);
-  transition: all 0.25s ease;
+  letter-spacing: -0.01em;
+  transition: opacity 0.2s ease;
+  word-break: break-all;
+  display: inline-block;
 }
 
-.kontak-direct-link:hover {
-  color: var(--accent-red);
+.kontak-email-btn:hover .kontak-email-val {
+  opacity: 0.65;
+}
+
+.kontak-copy-hint {
+  font-family: monospace, var(--font-body);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 10px;
+  cursor: pointer;
+  user-select: none;
+  letter-spacing: 0.02em;
+  transition: color 0.2s ease;
+}
+
+.kontak-copy-hint:hover {
+  color: var(--text-dark);
+}
+
+.elsewhere-spacing {
+  margin-top: 64px;
+}
+
+.kontak-social-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.kontak-social-item {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--text-dark);
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  display: inline-block;
+  width: fit-content;
+}
+
+.kontak-social-item:hover {
+  opacity: 0.6;
   transform: translateX(4px);
 }
 
-.kontak-form-card {
-  background-color: rgba(255, 255, 255, 0.55);
-  border: 1px solid var(--border-light);
-  padding: 40px;
-  border-radius: 4px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 16px 40px -12px rgba(12, 12, 12, 0.06);
-}
-
-.editorial-form {
+/* Kolom Kanan: Minimalist Underline Form */
+.kontak-form-col {
   display: flex;
   flex-direction: column;
-  gap: 20px;
 }
 
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+.editorial-minimal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
-.form-group {
+.minimal-form-group {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 8px;
+  transition: border-bottom-color 0.25s ease;
 }
 
-.form-label {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+.minimal-form-group:focus-within {
+  border-bottom-color: var(--text-dark);
+}
+
+.minimal-form-label {
+  font-family: monospace, var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
   color: var(--text-subtle);
   text-transform: uppercase;
 }
 
-.form-input {
+.minimal-line-input {
   width: 100%;
-  padding: 13px 16px;
-  background-color: rgba(255, 255, 255, 0.85);
-  border: 1px solid var(--border-light);
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  color: var(--text-dark);
+  background: transparent;
+  border: none;
   outline: none;
-  transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
-  border-radius: 2px;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--text-dark);
+  padding: 6px 0;
+  border-radius: 0;
   box-sizing: border-box;
 }
 
-.form-input:focus {
-  border-color: var(--text-dark);
-  background-color: #ffffff;
-  box-shadow: 0 0 0 1px var(--text-dark);
-}
-
-.form-select {
-  cursor: pointer;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%230c0c0c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 16px center;
-  padding-right: 36px;
-}
-
-.form-textarea {
+.minimal-line-textarea {
   resize: vertical;
-  min-height: 105px;
+  min-height: 70px;
 }
 
-.form-submit-btn {
+.minimal-form-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: -8px;
+}
+
+.minimal-submit-btn {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 10px;
-  width: 100%;
-  padding: 16px 28px;
+  padding: 14px 28px;
   background-color: var(--text-dark);
   color: #ffffff;
+  border: none;
   font-family: var(--font-body);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  border: none;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   border-radius: 2px;
-  margin-top: 6px;
 }
 
-.form-submit-btn:hover {
+.minimal-submit-btn:hover {
   background-color: var(--accent-red);
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(209, 44, 38, 0.25);
+  box-shadow: 0 8px 20px rgba(209, 44, 38, 0.25);
 }
 
-.form-submit-btn:active {
+.minimal-submit-btn:active {
   transform: translateY(0);
 }
 
-.form-success-note {
-  font-size: 0.825rem;
+.minimal-submitted-note {
+  font-family: monospace, var(--font-body);
+  font-size: 0.76rem;
   color: #15803d;
-  font-weight: 600;
-  text-align: center;
-  padding: 8px 12px;
-  background-color: rgba(22, 101, 52, 0.08);
-  border-radius: 2px;
+  letter-spacing: 0.05em;
 }
 
 /* Footer */
@@ -480,13 +577,9 @@
     padding: 70px 24px;
   }
   .tentang-content-grid,
-  .education-grid,
-  .kontak-content-grid {
+  .kontak-minimal-grid {
     grid-template-columns: 1fr;
-    gap: 36px;
-  }
-  .form-row {
-    grid-template-columns: 1fr;
+    gap: 48px;
   }
   .karya-header-overlay {
     top: 32px;
@@ -502,8 +595,8 @@
   .editorial-footer {
     padding: 32px 24px;
   }
-  .kontak-form-card {
-    padding: 28px 20px;
+  .elsewhere-spacing {
+    margin-top: 40px;
   }
 }
 
@@ -517,5 +610,8 @@
   }
   .driftwall-stage {
     height: 420px;
+  }
+  .education-trigger-left {
+    gap: 8px;
   }
 }
