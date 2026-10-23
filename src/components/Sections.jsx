@@ -446,39 +446,6 @@ export default function Sections() {
       );
 
       gsap.fromTo(
-        '#kontak .section-number',
-        { x: -35, opacity: 0, letterSpacing: '0.35em' },
-        {
-          scrollTrigger: {
-            trigger: '#kontak',
-            ...SCROLL_REVEAL_DEFAULTS
-          },
-          x: 0,
-          opacity: 1,
-          letterSpacing: '0.22em',
-          duration: MOTION_DURATION.base,
-          ease: MOTION_EASE.editorial,
-          clearProps: 'all'
-        }
-      );
-
-      gsap.fromTo(
-        '#kontak .section-title .editorial-mask-inner',
-        { yPercent: 110 },
-        {
-          scrollTrigger: {
-            trigger: '#kontak',
-            ...SCROLL_REVEAL_DEFAULTS
-          },
-          yPercent: 0,
-          duration: MOTION_DURATION.editorial,
-          delay: 0.08,
-          ease: MOTION_EASE.editorial,
-          clearProps: 'transform'
-        }
-      );
-
-      gsap.fromTo(
         ['.kontak-meta-col', '.kontak-form-col'],
         { y: 35, opacity: 0 },
         {
