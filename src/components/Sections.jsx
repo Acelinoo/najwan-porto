@@ -11,113 +11,121 @@ gsap.registerPlugin(ScrollTrigger);
 
 const NAJWAN_DRIFT_ITEMS = [
   {
-    image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80&auto=format&fit=crop',
-    title: 'Vespa Retro Chronicles'
+    image: '/gallery/vespa-urban-duo.png',
+    title: 'Braga Vintage Duet'
   },
   {
-    image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=80&auto=format&fit=crop',
-    title: 'Silhouettes & Textures'
+    image: '/gallery/vespa-tea-plantation.png',
+    title: 'Highland Serenity'
   },
   {
-    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&q=80&auto=format&fit=crop',
-    title: 'Raw Human Moments'
+    image: '/gallery/vespa-portrait-thumb.png',
+    title: 'Sartorial Companion'
   },
   {
-    image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80&auto=format&fit=crop',
-    title: 'Milan Runway Form'
+    image: '/gallery/vespa-roadside-scenic.png',
+    title: 'Southern Ridge Horizon'
   },
   {
-    image: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=800&q=80&auto=format&fit=crop',
-    title: 'Shadow & Highlight'
+    image: '/gallery/vespa-countryside-mist.png',
+    title: 'Valley of Solitude'
   },
   {
-    image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=800&q=80&auto=format&fit=crop',
-    title: 'Urban Kinetic Perspective'
+    image: '/gallery/vespa-urban-duo.png',
+    title: 'Urban Kinetic Still'
   },
   {
-    image: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&q=80&auto=format&fit=crop',
-    title: 'Monochrome Study'
+    image: '/gallery/vespa-tea-plantation.png',
+    title: 'Emerald Daylight'
   },
   {
-    image: 'https://images.unsplash.com/photo-1488161628813-04466f872be2?w=800&q=80&auto=format&fit=crop',
-    title: 'Menswear Sartorial'
+    image: '/gallery/vespa-portrait-thumb.png',
+    title: 'Confidence in Frame'
   },
   {
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&q=80&auto=format&fit=crop',
-    title: 'Intimate Portraiture'
+    image: '/gallery/vespa-roadside-scenic.png',
+    title: 'Winding Highland Route'
   },
   {
-    image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&q=80&auto=format&fit=crop',
-    title: 'Natural Ambient Tone'
+    image: '/gallery/vespa-countryside-mist.png',
+    title: 'Terrace Fog Study'
   },
   {
-    image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&q=80&auto=format&fit=crop',
-    title: 'Editorial Haute Form'
+    image: '/gallery/vespa-urban-duo.png',
+    title: 'Cobblestone Echo'
   },
   {
-    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&q=80&auto=format&fit=crop',
-    title: 'Sculpted Profile'
+    image: '/gallery/vespa-tea-plantation.png',
+    title: 'Pure Horizon Sky'
   },
   {
-    image: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=800&q=80&auto=format&fit=crop',
-    title: 'Classic Vintage Aura'
+    image: '/gallery/vespa-portrait-thumb.png',
+    title: 'Tailored Sartorial Note'
   },
   {
-    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80&auto=format&fit=crop',
-    title: 'Draped Elegance'
+    image: '/gallery/vespa-roadside-scenic.png',
+    title: 'Open Asphalt Line'
   },
   {
-    image: 'https://images.unsplash.com/photo-1521119989659-a83eee488004?w=800&q=80&auto=format&fit=crop',
-    title: 'Bold Contrast Profile'
+    image: '/gallery/vespa-countryside-mist.png',
+    title: 'Solitary Green Valley'
   },
   {
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80&auto=format&fit=crop',
-    title: 'Studio Depth Expression'
+    image: '/gallery/vespa-urban-duo.png',
+    title: 'Braga Archive 01'
+  },
+  {
+    image: '/gallery/vespa-tea-plantation.png',
+    title: 'Highland Archive 02'
+  },
+  {
+    image: '/gallery/vespa-roadside-scenic.png',
+    title: 'Roadside Archive 03'
   }
 ];
 
 const NAJWAN_PORTFOLIO_WORKS = [
   {
-    src: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1200&q=80&auto=format&fit=crop',
-    alt: 'Seri Fashion Streetwear Vespa Retro Chronicles',
-    title: 'Vespa Retro Chronicles',
-    subtitle: 'Streetwear & Urban Culture'
+    src: '/gallery/vespa-urban-duo.png',
+    alt: 'Dua unit Vespa klasik di depan pertokoan Jalan Braga Bandung',
+    title: 'Braga Vintage Duet',
+    subtitle: 'Urban Classic Lookbook'
   },
   {
-    src: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=1200&q=80&auto=format&fit=crop',
-    alt: 'Editorial Lookbook Silhouettes & Textures',
-    title: 'Silhouettes & Textures',
-    subtitle: 'High-Fashion Autumn'
+    src: '/gallery/vespa-tea-plantation.png',
+    alt: 'Vespa putih di hamparan perkebunan teh berlatar bukit hijau dan langit biru cerah',
+    title: 'Highland Serenity',
+    subtitle: 'Tea Plantation Open Air'
   },
   {
-    src: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1200&q=80&auto=format&fit=crop',
-    alt: 'Potret Studio Intim Raw Human Moments',
-    title: 'Raw Human Moments',
-    subtitle: 'Intimate Studio Portrait'
+    src: '/gallery/vespa-portrait-thumb.png',
+    alt: 'Pengendara berjas gelap dan kemeja putih memberikan jempol di samping setang Vespa putih',
+    title: 'Sartorial Companion',
+    subtitle: 'Tailored Blazer & Classic Vespa'
   },
   {
-    src: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&q=80&auto=format&fit=crop',
-    alt: 'Draperi Kain dan Siluet Editorial',
-    title: 'Milan Runway Form',
-    subtitle: 'Avant-Garde Drape'
+    src: '/gallery/vespa-roadside-scenic.png',
+    alt: 'Vespa klasik putih berban serep di tepi jalan aspal perbukitan kebun teh',
+    title: 'Southern Ridge Horizon',
+    subtitle: 'Highland Route Perspective'
   },
   {
-    src: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=1200&q=80&auto=format&fit=crop',
-    alt: 'Studio Lighting High-Contrast',
-    title: 'Shadow & Highlight',
-    subtitle: 'Lightroom Experiments'
+    src: '/gallery/vespa-countryside-mist.png',
+    alt: 'Pengendara berhelm kuning berdiri di samping Vespa menghadap lembah sawah bertingkat dan bukit berkabut',
+    title: 'Valley of Solitude',
+    subtitle: 'Misty Terraces & Rural Solitude'
   },
   {
-    src: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=1200&q=80&auto=format&fit=crop',
-    alt: 'Street Persona Urban Culture',
-    title: 'Urban Kinetic Perspective',
-    subtitle: 'Candid Motion'
+    src: '/gallery/vespa-urban-duo.png',
+    alt: 'Siluet Vespa klasik di trotoar kota sudut alternatif',
+    title: 'Heritage Streetform',
+    subtitle: 'Braga Monochrome Cadence'
   },
   {
-    src: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1200&q=80&auto=format&fit=crop',
-    alt: 'Fine Art Editorial Portrait',
-    title: 'Monochrome Study',
-    subtitle: 'Form & Expression'
+    src: '/gallery/vespa-tea-plantation.png',
+    alt: 'Komposisi Vespa klasik putih dan lereng perkebunan teh hijau',
+    title: 'Emerald Vista',
+    subtitle: 'Plateau Ambient Study'
   }
 ];
 

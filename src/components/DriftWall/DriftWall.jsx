@@ -3,17 +3,19 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import './DriftWall.css';
 
-const DEFAULT_ITEMS = Array.from({ length: 15 }, (_, i) => {
-  const ids = [1015, 1025, 1039, 1043, 1044, 1050, 1062, 1069, 1074, 1080, 1084, 106, 110, 133, 164];
-  return {
-    image: `https://picsum.photos/id/${ids[i % ids.length]}/600/400`,
-    title: `Tile ${i + 1}`,
-    href: undefined
-  };
-});
+const DEFAULT_GALLERY_IMAGES = [
+  '/gallery/vespa-urban-duo.png',
+  '/gallery/vespa-tea-plantation.png',
+  '/gallery/vespa-portrait-thumb.png',
+  '/gallery/vespa-roadside-scenic.png',
+  '/gallery/vespa-countryside-mist.png'
+];
 
-const prefersReducedMotion = () =>
-  typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const DEFAULT_ITEMS = Array.from({ length: 15 }, (_, i) => ({
+  image: DEFAULT_GALLERY_IMAGES[i % DEFAULT_GALLERY_IMAGES.length],
+  title: `Archive ${i + 1}`,
+  href: undefined
+}));
 
 const columnFactor = (index, variance) => {
   const pseudo = ((index * 0.6180339887 + 0.35) % 1) * 2 - 1;
@@ -62,7 +64,7 @@ const DriftWall = ({
   const [containerHeight, setContainerHeight] = useState(600);
   const [activeId, setActiveId] = useState(null);
   const activeIdRef = useRef(null);
-  const [reduced, setReduced] = useState(false);
+  const reduced = false;
 
   const columnItems = useMemo(() => {
     const cols = Array.from({ length: columns }, () => []);
