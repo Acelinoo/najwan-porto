@@ -40,20 +40,20 @@ export default function SearchModal({ isOpen, onClose }) {
         <div className="search-suggestions">
           <p className="suggestions-title">SERI POPULER</p>
           <div className="suggestion-tags">
-            <a href="#karya" onClick={onClose} className="suggestion-tag">
-              <span>Editorial Series</span>
-              <ArrowRight size={12} />
-            </a>
-            <a href="#karya" onClick={onClose} className="suggestion-tag">
-              <span>Vespa & Urban Street</span>
-              <ArrowRight size={12} />
-            </a>
-            <a href="#galeri" onClick={onClose} className="suggestion-tag">
-              <span>Fashion Lookbook</span>
-              <ArrowRight size={12} />
-            </a>
             <a href="#about" onClick={onClose} className="suggestion-tag">
-              <span>Portrait Story</span>
+              <span>Tentang Saya</span>
+              <ArrowRight size={12} />
+            </a>
+            <a href="#journey" onClick={onClose} className="suggestion-tag">
+              <span>Perjalanan</span>
+              <ArrowRight size={12} />
+            </a>
+            <a href="#karya" onClick={onClose} className="suggestion-tag">
+              <span>Seri Foto Terpilih</span>
+              <ArrowRight size={12} />
+            </a>
+            <a href="#arsip" onClick={onClose} className="suggestion-tag">
+              <span>Arsip Visual</span>
               <ArrowRight size={12} />
             </a>
           </div>

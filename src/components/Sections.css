@@ -62,7 +62,9 @@
   will-change: transform;
 }
 
-/* 01 / SECTION ABOUT & JOURNEY */
+/* ==========================================================================
+   01 / SECTION ABOUT (TENTANG SAYA)
+   ========================================================================== */
 .section-anchor-alias {
   position: absolute;
   top: -80px;
@@ -73,14 +75,13 @@
   pointer-events: none;
 }
 
-.section-tentang {
+.section-about {
   background-color: rgba(12, 12, 12, 0.02);
 }
 
-/* 1. Tentang Najwan Grid */
 .about-editorial-grid {
   display: grid;
-  grid-template-columns: 1fr 1.05fr;
+  grid-template-columns: 1fr 1.08fr;
   gap: 72px;
   align-items: start;
   margin-top: 12px;
@@ -171,94 +172,47 @@
   display: inline-block;
 }
 
-.about-image-caption {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* Minat & Ketertarikan Card (Clean, non-cluttered) */
+.about-passions-card {
+  margin-top: 16px;
   padding-top: 14px;
-  margin-top: 14px;
   border-top: 1px solid var(--border-light);
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.caption-item {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 10px;
 }
 
-.caption-tag {
+.passions-tag-label {
   font-family: monospace, var(--font-body);
   font-size: 0.68rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.18em;
+  font-weight: 700;
   color: var(--text-subtle);
   text-transform: uppercase;
 }
 
-.caption-val {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
+.passions-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.passion-pill {
+  font-size: 0.8rem;
   font-weight: 600;
+  letter-spacing: 0.04em;
   color: var(--text-dark);
+  background-color: rgba(12, 12, 12, 0.04);
+  border: 1px solid var(--border-medium);
+  padding: 5px 14px;
+  border-radius: 99px;
+  transition: all 0.25s ease;
 }
 
-/* Three Pillars of Najwan */
-.about-pillars {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  border-top: 1px solid var(--border-light);
-  padding-top: 24px;
-}
-
-.pillar-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 12px 16px;
-  background-color: rgba(12, 12, 12, 0.025);
-  border-left: 2px solid var(--border-medium);
-  border-radius: 0 3px 3px 0;
-  transition: all 0.3s var(--ease-editorial);
-  will-change: transform, opacity;
-}
-
-.pillar-item:hover {
-  border-left-color: var(--accent-red);
-  background-color: rgba(12, 12, 12, 0.045);
-  transform: translateX(4px);
-}
-
-.pillar-num {
-  font-family: monospace, var(--font-body);
-  font-size: 0.72rem;
-  font-weight: 700;
+.passion-pill:hover {
+  border-color: var(--accent-red);
   color: var(--accent-red);
-  letter-spacing: 0.1em;
-  padding-top: 2px;
-  flex-shrink: 0;
-}
-
-.pillar-info {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.pillar-label {
-  font-family: var(--font-body);
-  font-size: 0.74rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--text-dark);
-}
-
-.pillar-desc {
-  font-size: 0.88rem;
-  color: var(--text-muted);
-  line-height: 1.45;
+  background-color: rgba(209, 44, 38, 0.05);
 }
 
 /* Narrative Story Column */
@@ -289,45 +243,25 @@
   font-weight: 500;
 }
 
-.music-band {
-  font-weight: 600;
-  color: var(--text-dark);
-  letter-spacing: -0.01em;
-}
-
-/* 2. PENDIDIKAN DAN PERJALANAN (BAGIAN TERPISAH) */
-.journey-section-wrap {
-  margin-top: 104px;
-  padding-top: 88px;
-  position: relative;
-}
-
-.journey-divider {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-
-.journey-header {
-  margin-bottom: 48px;
-}
-
-.journey-section-title {
-  font-size: clamp(1.8rem, 3.8vw, 3rem);
+/* ==========================================================================
+   02 / SECTION JOURNEY (PERJALANAN)
+   ========================================================================== */
+.section-journey {
+  background-color: var(--bg-studio);
 }
 
 .journey-editorial-grid {
   display: grid;
-  grid-template-columns: 1fr 1.05fr;
+  grid-template-columns: 1fr 1.08fr;
   gap: 72px;
   align-items: start;
+  margin-top: 12px;
 }
 
-.journey-left-col {
+.journey-intro-col {
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: 32px;
 }
 
 .journey-headline {
@@ -342,51 +276,65 @@
   will-change: transform, opacity;
 }
 
-/* Supporting Education Milestone Track */
-.journey-path-card {
+.journey-intro-text {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-width: 60ch;
+}
+
+/* Journey Timeline (Clean, Honest, First-Person) */
+.journey-timeline-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.journey-timeline-card {
   background-color: rgba(12, 12, 12, 0.025);
   border: 1px solid var(--border-light);
   border-radius: 4px;
   padding: 32px 28px;
 }
 
-.journey-path-header {
+.timeline-card-header {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-light);
 }
 
-.path-indicator-dot {
+.timeline-header-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
   background-color: var(--accent-red);
 }
 
-.path-kicker {
+.timeline-header-tag {
   font-family: monospace, var(--font-body);
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   letter-spacing: 0.18em;
   font-weight: 700;
   color: var(--text-subtle);
   text-transform: uppercase;
 }
 
-.journey-steps {
+.journey-timeline {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 32px;
 }
 
-.journey-step-item {
+.timeline-node {
   display: flex;
   gap: 20px;
   align-items: stretch;
   will-change: transform, opacity;
 }
 
-.step-bullet-col {
+.timeline-node-aside {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -394,7 +342,7 @@
   flex-shrink: 0;
 }
 
-.step-num {
+.node-index {
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -403,35 +351,36 @@
   align-items: center;
   justify-content: center;
   font-family: monospace, var(--font-body);
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 700;
   color: var(--text-muted);
   background-color: var(--bg-studio);
   flex-shrink: 0;
 }
 
-.step-num-current {
+.node-index-active {
   border-color: var(--accent-red);
   color: var(--accent-red);
   background-color: rgba(209, 44, 38, 0.06);
 }
 
-.step-line {
+.node-stem {
   width: 1px;
   flex-grow: 1;
   background-color: var(--border-light);
-  margin: 8px 0;
-  min-height: 52px;
+  margin: 10px 0;
+  min-height: 60px;
 }
 
-.step-details {
+.node-content {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
   padding-top: 3px;
+  max-width: 58ch;
 }
 
-.step-level {
+.node-category {
   font-family: monospace, var(--font-body);
   font-size: 0.68rem;
   letter-spacing: 0.14em;
@@ -440,7 +389,7 @@
   text-transform: uppercase;
 }
 
-.step-title {
+.node-title {
   font-family: var(--font-display);
   font-size: 1.15rem;
   font-weight: 700;
@@ -449,64 +398,19 @@
   margin: 2px 0 6px;
 }
 
-.step-desc {
-  font-size: 0.92rem;
-  line-height: 1.62;
+.node-description {
+  font-size: 0.95rem;
+  line-height: 1.7;
   color: var(--text-charcoal);
+  font-weight: 400;
 }
 
-/* Journey Narrative & Philosophy Quote */
-.journey-right-col {
-  display: flex;
-  flex-direction: column;
-}
-
-.journey-narrative {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  max-width: 65ch;
-}
-
-.journey-quote-box {
-  position: relative;
-  margin-top: 16px;
-  padding: 24px 28px 24px 32px;
-  background-color: rgba(12, 12, 12, 0.035);
-  border-left: 3px solid var(--accent-red);
-  border-radius: 0 4px 4px 0;
-  will-change: transform, opacity;
-}
-
-.quote-mark {
-  position: absolute;
-  top: 10px;
-  left: 12px;
-  font-family: var(--font-display);
-  font-size: 2.5rem;
-  line-height: 1;
-  color: rgba(209, 44, 38, 0.22);
-  pointer-events: none;
-}
-
-.quote-text {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  font-style: italic;
-  line-height: 1.65;
-  color: var(--text-dark);
-  font-weight: 600;
-  margin: 0;
-}
-
-.quote-author {
-  display: block;
-  margin-top: 12px;
-  font-family: monospace, var(--font-body);
-  font-size: 0.72rem;
-  letter-spacing: 0.15em;
-  color: var(--text-subtle);
-  text-transform: uppercase;
+.node-sub-description {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border-light);
+  color: var(--text-muted);
+  font-size: 0.92rem;
 }
 
 /* 02 / KARYA FULLSCREEN SECTION */
@@ -821,10 +725,6 @@
     grid-template-columns: 1fr;
     gap: 48px;
   }
-  .journey-section-wrap {
-    margin-top: 64px;
-    padding-top: 56px;
-  }
   .karya-header-overlay {
     top: 32px;
     left: 24px;
@@ -866,13 +766,10 @@
   .narrative-lead {
     font-size: 1.05rem;
   }
-  .journey-path-card {
+  .journey-timeline-card {
     padding: 22px 18px;
   }
-  .journey-quote-box {
-    padding: 20px 20px 20px 24px;
-  }
-  .quote-text {
-    font-size: 0.95rem;
+  .timeline-node {
+    gap: 14px;
   }
 }

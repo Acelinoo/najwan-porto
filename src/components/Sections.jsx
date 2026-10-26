@@ -153,7 +153,7 @@ export default function Sections() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // --- 1. SECTION ABOUT (TENTANG NAJWAN & PERJALANAN) ANIMATIONS ---
+      // --- 1. SECTION 01 / ABOUT (TENTANG SAYA) ANIMATIONS ---
       gsap.fromTo(
         '#about .editorial-divider, #tentang .editorial-divider',
         { scaleX: 0 },
@@ -252,30 +252,72 @@ export default function Sections() {
         }
       );
 
+      gsap.to('#about .section-title', {
+        x: -24,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '#about',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1
+        }
+      });
+
+      // --- 2. SECTION 02 / JOURNEY (PERJALANAN) ANIMATIONS ---
       gsap.fromTo(
-        '#about .pillar-item',
-        { y: 20, opacity: 0 },
+        '#journey .editorial-divider',
+        { scaleX: 0 },
         {
           scrollTrigger: {
-            trigger: '#about .about-pillars',
+            trigger: '#journey',
             ...SCROLL_REVEAL_DEFAULTS
           },
-          y: 0,
+          scaleX: 1,
+          duration: MOTION_DURATION.editorial,
+          ease: MOTION_EASE.editorial,
+          clearProps: 'scaleX'
+        }
+      );
+
+      gsap.fromTo(
+        '#journey .section-number',
+        { x: -35, opacity: 0, letterSpacing: '0.35em' },
+        {
+          scrollTrigger: {
+            trigger: '#journey',
+            ...SCROLL_REVEAL_DEFAULTS
+          },
+          x: 0,
           opacity: 1,
-          stagger: MOTION_STAGGER.base,
+          letterSpacing: '0.22em',
           duration: MOTION_DURATION.base,
-          ease: MOTION_EASE.smooth,
+          ease: MOTION_EASE.editorial,
           clearProps: 'all'
         }
       );
 
-      // --- 1.1 JOURNEY & EDUCATION REVEAL ---
       gsap.fromTo(
-        '#about .journey-headline',
+        '#journey .section-title .editorial-mask-inner',
+        { yPercent: 110 },
+        {
+          scrollTrigger: {
+            trigger: '#journey',
+            ...SCROLL_REVEAL_DEFAULTS
+          },
+          yPercent: 0,
+          duration: MOTION_DURATION.editorial,
+          delay: 0.08,
+          ease: MOTION_EASE.editorial,
+          clearProps: 'transform'
+        }
+      );
+
+      gsap.fromTo(
+        '#journey .journey-headline',
         { y: 30, opacity: 0 },
         {
           scrollTrigger: {
-            trigger: '#about .journey-section-wrap',
+            trigger: '#journey .journey-editorial-grid',
             ...SCROLL_REVEAL_DEFAULTS
           },
           y: 0,
@@ -287,28 +329,11 @@ export default function Sections() {
       );
 
       gsap.fromTo(
-        '#about .journey-step-item',
-        { x: -25, opacity: 0 },
-        {
-          scrollTrigger: {
-            trigger: '#about .journey-path-card',
-            ...SCROLL_REVEAL_DEFAULTS
-          },
-          x: 0,
-          opacity: 1,
-          stagger: 0.14,
-          duration: MOTION_DURATION.base,
-          ease: MOTION_EASE.editorial,
-          clearProps: 'all'
-        }
-      );
-
-      gsap.fromTo(
-        '#about .journey-narrative .narrative-paragraph',
+        '#journey .journey-intro-text .narrative-paragraph',
         { y: 28, opacity: 0 },
         {
           scrollTrigger: {
-            trigger: '#about .journey-narrative',
+            trigger: '#journey .journey-intro-text',
             ...SCROLL_REVEAL_DEFAULTS
           },
           y: 0,
@@ -321,27 +346,27 @@ export default function Sections() {
       );
 
       gsap.fromTo(
-        '#about .journey-quote-box',
-        { y: 24, opacity: 0 },
+        '#journey .timeline-node',
+        { x: -25, opacity: 0 },
         {
           scrollTrigger: {
-            trigger: '#about .journey-quote-box',
+            trigger: '#journey .journey-timeline',
             ...SCROLL_REVEAL_DEFAULTS
           },
-          y: 0,
+          x: 0,
           opacity: 1,
+          stagger: 0.16,
           duration: MOTION_DURATION.base,
-          ease: MOTION_EASE.smooth,
+          ease: MOTION_EASE.editorial,
           clearProps: 'all'
         }
       );
 
-      // Subtle horizontal parallax on section title during scroll
-      gsap.to('#about .section-title', {
+      gsap.to('#journey .section-title', {
         x: -24,
         ease: 'none',
         scrollTrigger: {
-          trigger: '#about',
+          trigger: '#journey',
           start: 'top bottom',
           end: 'bottom top',
           scrub: 1
@@ -570,8 +595,8 @@ export default function Sections() {
 
   return (
     <div ref={wrapperRef} className="editorial-content-wrapper">
-      {/* 01 / SECTION ABOUT & JOURNEY */}
-      <section id="about" className="editorial-section section-tentang" aria-label="Tentang Najwan">
+      {/* 01 / SECTION ABOUT */}
+      <section id="about" className="editorial-section section-about" aria-label="Tentang Saya">
         {/* Anchor alias untuk kompatibilitas tautan internal lama */}
         <span id="tentang" className="section-anchor-alias" aria-hidden="true" />
         <div className="editorial-divider" />
@@ -587,15 +612,15 @@ export default function Sections() {
             </h2>
           </div>
 
-          {/* 1. KONTEN TENTANG NAJWAN (DUA KOLOM EDITORIAL) */}
+          {/* Konten Tentang Saya (Dua Kolom Editorial) */}
           <div className="about-editorial-grid">
-            {/* Kolom Kiri: Headline Besar Editorial & Frame Visual Najwan */}
+            {/* Kolom Kiri: Headline Besar & Frame Visual Najwan */}
             <div className="about-hero-col">
               <h3 className="about-editorial-headline">
-                DI ANTARA MESIN KLASIK, MUSIK, DAN CERITA DALAM BINGKAI.
+                DI ANTARA VESPA, MUSIK, DAN FOTOGRAFI.
               </h3>
 
-              {/* Editorial Media Frame */}
+              {/* Editorial Visual Media Frame */}
               <div className="about-visual-frame">
                 <div className="about-image-wrapper">
                   <picture>
@@ -614,153 +639,127 @@ export default function Sections() {
                     <span className="about-badge-text">ARSIP PERSONAL</span>
                   </div>
                 </div>
-                <div className="about-image-caption">
-                  <div className="caption-item">
-                    <span className="caption-tag">ESTETIKA</span>
-                    <span className="caption-val">Vespa Klasik & Gaya Personal</span>
-                  </div>
-                  <div className="caption-item">
-                    <span className="caption-tag">PERSPEKTIF</span>
-                    <span className="caption-val">Ruang Ekspresi & Kebebasan</span>
-                  </div>
-                </div>
-              </div>
 
-              {/* Tiga Pilar Karakter & Minat */}
-              <div className="about-pillars">
-                <div className="pillar-item">
-                  <span className="pillar-num">01</span>
-                  <div className="pillar-info">
-                    <span className="pillar-label">MESIN KLASIK</span>
-                    <span className="pillar-desc">Vespa & Solidaritas Komunitas Scooter</span>
-                  </div>
-                </div>
-                <div className="pillar-item">
-                  <span className="pillar-num">02</span>
-                  <div className="pillar-info">
-                    <span className="pillar-label">MUSIK ERA '90-AN</span>
-                    <span className="pillar-desc">The Beatles, The Who, Joy Division, Oasis, Blur</span>
-                  </div>
-                </div>
-                <div className="pillar-item">
-                  <span className="pillar-num">03</span>
-                  <div className="pillar-info">
-                    <span className="pillar-label">FOTOGRAFI</span>
-                    <span className="pillar-desc">Eksplorasi Cerita, Suasana & Seni Visual</span>
+                <div className="about-passions-card">
+                  <span className="passions-tag-label">MINAT & KETERTARIKAN</span>
+                  <div className="passions-pill-row">
+                    <span className="passion-pill">Vespa Klasik</span>
+                    <span className="passion-pill">Musik '90-an & Sebelumnya</span>
+                    <span className="passion-pill">Seni Fotografi</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Kolom Kanan: Narasi 5 Paragraf Lengkap Tanpa Mengubah Makna */}
+            {/* Kolom Kanan: Narasi Personal Menggunakan Sudut Pandang Orang Pertama */}
             <div className="about-narrative-col">
               <div className="about-narrative">
                 <p className="narrative-paragraph narrative-lead">
-                  Najwan memiliki kecintaan terhadap sepeda motor klasik, khususnya Vespa, serta musik dari era 1990-an dan sebelumnya. Ketertarikannya terhadap Vespa berawal dari rasa ingin tahu mengenai komunitas penggemar scooter klasik yang dikenal memiliki jaringan luas, solidaritas kuat, dan kebiasaan saling membantu.
+                  Saya menyukai sepeda motor klasik, khususnya Vespa, serta musik dari era 1990-an dan sebelumnya. Ketertarikan terhadap Vespa berawal dari rasa ingin tahu saya terhadap komunitas scooter klasik, yang dikenal memiliki jaringan luas, solidaritas kuat, dan kebiasaan saling membantu.
                 </p>
 
                 <p className="narrative-paragraph">
-                  Bagi Najwan, Vespa bukan sekadar alat transportasi. Setiap perjalanan memiliki cerita dan makna tersendiri. Vespa juga menjadi simbol kebebasan, ruang untuk mengekspresikan diri, serta bagian dari gaya hidup yang ia jalani. Kecintaan tersebut dilengkapi dengan ketertarikannya terhadap dunia berpakaian dan gaya klasik yang menjadi bagian dari penampilannya saat berkendara.
+                  Bagi saya, Vespa bukan sekadar kendaraan. Setiap perjalanan memiliki cerita dan arti tersendiri. Ada kebebasan, kebersamaan, dan ruang untuk mengekspresikan diri melalui kendaraan, pakaian, serta gaya hidup yang saya pilih.
                 </p>
 
                 <p className="narrative-paragraph">
-                  Musik juga memiliki tempat penting dalam kesehariannya. Ia menikmati karya dari <strong className="music-band">The Beatles</strong>, <strong className="music-band">The Who</strong>, <strong className="music-band">Joy Division</strong>, <strong className="music-band">New Order</strong>, <strong className="music-band">Oasis</strong>, <strong className="music-band">Suede</strong>, <strong className="music-band">Pulp</strong>, dan <strong className="music-band">Blur</strong>. Musik-musik tersebut menjadi teman dalam berbagai aktivitas sekaligus bagian dari selera dan identitas personalnya.
+                  Musik juga menjadi bagian dari keseharian saya. The Beatles, The Who, Joy Division, New Order, Oasis, Suede, Pulp, dan Blur adalah beberapa band yang sering saya dengarkan. Musik-musik tersebut menemani berbagai aktivitas dan menjadi bagian dari selera pribadi saya.
                 </p>
 
                 <p className="narrative-paragraph">
-                  Di tengah kehidupan yang semakin cepat dan penuh kesibukan, Najwan memilih untuk tetap menikmati kendaraan klasik dan musik dari masa lalu. Baginya, keduanya memberikan ruang untuk menjalani hidup dengan lebih tenang, santai, dan sesuai dengan caranya sendiri.
+                  Di tengah kehidupan yang semakin cepat, saya tetap menikmati Vespa dan musik klasik karena keduanya memberikan ruang untuk menjalani hari dengan lebih tenang dan santai. Saya tidak merasa harus selalu mengikuti perubahan zaman. Ada hal-hal lama yang tetap layak dinikmati dan memiliki arti tersendiri.
                 </p>
 
                 <p className="narrative-paragraph">
-                  Selain menyukai Vespa dan musik, Najwan juga memiliki ketertarikan terhadap fotografi. Ia memandang fotografi sebagai bentuk seni yang memiliki kedekatan dengan seni lukis. Setiap foto bukan hanya rekaman visual, melainkan juga karya yang dapat menyimpan makna, suasana, dan cerita. Fotografi menjadi sarana untuk mengekspresikan diri sekaligus kegiatan yang ia nikmati saat memiliki waktu luang.
+                  Selain Vespa dan musik, saya juga menyukai fotografi. Bagi saya, fotografi merupakan bentuk seni yang memiliki kedekatan dengan seni lukis. Setiap jepretan dapat menyimpan cerita, suasana, dan makna yang berbeda. Saya menikmati proses mengamati, menemukan sudut pandang, dan mengabadikan momen melalui gambar.
+                </p>
+
+                <p className="narrative-paragraph">
+                  Fotografi juga menjadi cara bagi saya untuk mengekspresikan diri sekaligus menikmati waktu luang. Melalui foto, saya ingin menyimpan hal-hal yang menarik perhatian saya dan membagikan cara saya melihat dunia kepada orang lain.
                 </p>
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* 2. BAGIAN PENDIDIKAN DAN PERJALANAN (BAGIAN TERPISAH) */}
-          <div className="journey-section-wrap">
-            <div className="journey-divider editorial-divider" />
+      {/* 02 / SECTION JOURNEY */}
+      <section id="journey" className="editorial-section section-journey" aria-label="Perjalanan Najwan">
+        {/* Alias anchor jika diperlukan */}
+        <span id="perjalanan" className="section-anchor-alias" aria-hidden="true" />
+        <div className="editorial-divider" />
 
-            <div className="journey-header">
-              <span className="section-number">01.1 / PENDIDIKAN & PERJALANAN</span>
-              <h3 className="section-title journey-section-title">
-                <span className="editorial-mask">
-                  <span className="editorial-mask-inner">PENDIDIKAN & PERJALANAN</span>
-                </span>
+        <div className="section-container">
+          <div className="section-header">
+            <span className="section-number">02 / PERJALANAN</span>
+            <h2 className="section-title">
+              <span className="editorial-mask">
+                <span className="editorial-mask-inner">PERJALANAN</span>
+              </span>
+            </h2>
+          </div>
+
+          <div className="journey-editorial-grid">
+            {/* Kolom Kiri: Headline & Deskripsi Pembuka (Sudut Pandang Orang Pertama) */}
+            <div className="journey-intro-col">
+              <h3 className="journey-headline">
+                SETIAP ORANG MEMILIKI JALANNYA SENDIRI.
               </h3>
+
+              <div className="journey-intro-text">
+                <p className="narrative-paragraph narrative-lead">
+                  Perjalanan saya tidak selalu berjalan dalam satu arah. Saya memulai pendidikan di bidang teknologi, kemudian melanjutkan studi di bidang yang berbeda. Dari proses tersebut, saya belajar bahwa perkembangan diri tidak harus selalu mengikuti satu jalur yang sama.
+                </p>
+
+                <p className="narrative-paragraph">
+                  Saya percaya bahwa belajar merupakan proses yang tidak pernah selesai. Semakin banyak hal yang dipelajari, semakin besar kesempatan untuk berkembang dan memberikan manfaat bagi diri sendiri maupun orang lain.
+                </p>
+
+                <p className="narrative-paragraph">
+                  Bagi saya, setiap orang memiliki titik awal, kesempatan, dan perjalanan yang berbeda. Tidak semua orang harus berjalan dengan kecepatan atau arah yang sama. Hal terpenting adalah tetap mau belajar, menjalani proses, dan berusaha menjadi pribadi yang bermanfaat.
+                </p>
+              </div>
             </div>
 
-            <div className="journey-editorial-grid">
-              {/* Kolom Kiri: Headline Editorial & Lintasan Pendidikan */}
-              <div className="journey-left-col">
-                <h4 className="journey-headline">
-                  SETIAP ORANG MEMILIKI JALANNYA SENDIRI.
-                </h4>
-
-                <div className="journey-path-card">
-                  <div className="journey-path-header">
-                    <span className="path-indicator-dot" />
-                    <span className="path-kicker">LINTASAN PROSES BELAJAR</span>
-                  </div>
-
-                  <div className="journey-steps">
-                    <div className="journey-step-item">
-                      <div className="step-bullet-col">
-                        <span className="step-num">01</span>
-                        <div className="step-line" />
-                      </div>
-                      <div className="step-details">
-                        <span className="step-level">PENDIDIKAN MENENGAH KEJURUAN</span>
-                        <h5 className="step-title">Rekayasa Perangkat Lunak (RPL)</h5>
-                        <p className="step-desc">
-                          Fokus pada pengembangan website dan aplikasi. Memberikan pengalaman awal dalam mengenal dunia teknologi dan pengembangan perangkat lunak.
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="journey-step-item">
-                      <div className="step-bullet-col">
-                        <span className="step-num step-num-current">02</span>
-                      </div>
-                      <div className="step-details">
-                        <span className="step-level">PENDIDIKAN TINGGI (S1)</span>
-                        <h5 className="step-title">Ilmu Pemerintahan</h5>
-                        <p className="step-desc">
-                          Melanjutkan ke jenjang strata satu pada bidang yang berbeda. Menghadapi kesempatan, perubahan, dan pengalaman baru dalam memperluas cakrawala diri.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+            {/* Kolom Kanan: Riwayat Pendidikan (Dua Tahap Utama Sederhana Tanpa Fakta Karangan) */}
+            <div className="journey-timeline-col">
+              <div className="journey-timeline-card">
+                <div className="timeline-card-header">
+                  <span className="timeline-header-dot" />
+                  <span className="timeline-header-tag">PENDIDIKAN</span>
                 </div>
-              </div>
 
-              {/* Kolom Kanan: Narasi Perjalanan & Filosofi Belajar */}
-              <div className="journey-right-col">
-                <div className="journey-narrative">
-                  <p className="narrative-paragraph narrative-lead">
-                    Najwan menempuh pendidikan menengah kejuruan di bidang Rekayasa Perangkat Lunak (RPL), dengan fokus pada pengembangan website dan aplikasi. Pendidikan tersebut memberinya pengalaman awal dalam mengenal dunia teknologi dan pengembangan perangkat lunak.
-                  </p>
+                <div className="journey-timeline">
+                  {/* Tahap 1: SMK RPL */}
+                  <div className="timeline-node">
+                    <div className="timeline-node-aside">
+                      <span className="node-index">01</span>
+                      <div className="node-stem" />
+                    </div>
+                    <div className="node-content">
+                      <span className="node-category">PENDIDIKAN MENENGAH KEJURUAN</span>
+                      <h4 className="node-title">SMK — Rekayasa Perangkat Lunak (RPL)</h4>
+                      <p className="node-description">
+                        Saya menempuh pendidikan di bidang Rekayasa Perangkat Lunak dengan mempelajari dasar-dasar pengembangan website dan aplikasi. Dari pengalaman tersebut, saya mulai mengenal dunia teknologi dan memahami bagaimana sebuah aplikasi dibangun.
+                      </p>
+                    </div>
+                  </div>
 
-                  <p className="narrative-paragraph">
-                    Saat ini, ia melanjutkan pendidikan ke jenjang S1 Ilmu Pemerintahan, bidang yang berbeda dari latar belakang pendidikan sebelumnya. Perbedaan tersebut menjadi bagian dari perjalanan hidupnya dalam menghadapi kesempatan, perubahan, dan pengalaman baru.
-                  </p>
-
-                  <p className="narrative-paragraph">
-                    Bagi Najwan, proses belajar tidak berhenti setelah menyelesaikan pendidikan tertentu. Semakin banyak pengetahuan yang diperoleh, semakin besar pula kesempatan untuk mengembangkan diri dan memberikan manfaat bagi orang lain.
-                  </p>
-
-                  <p className="narrative-paragraph">
-                    Ia meyakini bahwa setiap orang memiliki titik awal, pengalaman, dan perjalanan hidup yang berbeda. Karena itu, kehidupan setiap orang tidak dapat dibandingkan begitu saja. Hal yang terpenting adalah terus belajar, menjalani proses dengan baik, serta berusaha memberikan manfaat bagi diri sendiri dan orang lain.
-                  </p>
-
-                  {/* Quote Filosofi Belajar */}
-                  <div className="journey-quote-box">
-                    <div className="quote-mark" aria-hidden="true">“</div>
-                    <blockquote className="quote-text">
-                      Hal yang terpenting adalah terus belajar, menjalani proses dengan baik, serta berusaha memberikan manfaat bagi diri sendiri dan orang lain.
-                    </blockquote>
-                    <span className="quote-author">— Nilai & Prinsip Najwan</span>
+                  {/* Tahap 2: S1 Ilmu Pemerintahan */}
+                  <div className="timeline-node">
+                    <div className="timeline-node-aside">
+                      <span className="node-index node-index-active">02</span>
+                    </div>
+                    <div className="node-content">
+                      <span className="node-category">PENDIDIKAN TINGGI (S1)</span>
+                      <h4 className="node-title">S1 — Ilmu Pemerintahan</h4>
+                      <p className="node-description">
+                        Saat ini, saya menempuh pendidikan S1 di bidang Ilmu Pemerintahan, bidang yang berbeda dari latar belakang pendidikan sebelumnya. Perubahan ini menjadi bagian dari perjalanan saya dalam mempelajari hal baru dan menjalani kesempatan yang ada.
+                      </p>
+                      <p className="node-description node-sub-description">
+                        Saya percaya bahwa latar belakang pendidikan bukan satu-satunya hal yang menentukan arah hidup seseorang. Selama masih memiliki kemauan untuk belajar, selalu ada kesempatan untuk memperluas wawasan dan mengembangkan diri.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -769,7 +768,7 @@ export default function Sections() {
         </div>
       </section>
 
-      {/* 02 / SECTION KARYA - FULLSCREEN FLEX CAROUSEL (SLIDE ONLY) */}
+      {/* 03 / SECTION KARYA - FULLSCREEN FLEX CAROUSEL (SLIDE ONLY) */}
       <section
         id="karya"
         className="section-karya-fullscreen"
@@ -777,7 +776,7 @@ export default function Sections() {
       >
         <div className="editorial-divider" />
         <div className="karya-header-overlay">
-          <span className="section-number">02 / KARYA</span>
+          <span className="section-number">03 / KARYA</span>
           <h2 className="karya-overlay-title">
             <span className="editorial-mask">
               <span className="editorial-mask-inner">SERI EDITORIAL TERPILIH</span>
@@ -803,7 +802,7 @@ export default function Sections() {
         />
       </section>
 
-      {/* 03 / SECTION DRIFT WALL - ARSIP VISUAL */}
+      {/* 04 / SECTION DRIFT WALL - ARSIP VISUAL */}
       <section
         id="arsip"
         className="section-driftwall"
@@ -812,7 +811,7 @@ export default function Sections() {
         <div className="editorial-divider" />
         <div className="section-container driftwall-header-wrap">
           <div className="section-header">
-            <span className="section-number">03 / ARSIP VISUAL</span>
+            <span className="section-number">04 / ARSIP VISUAL</span>
             <h2 className="section-title">
               <span className="editorial-mask">
                 <span className="editorial-mask-inner">EKSPLORASI & PERSPEKTIF</span>
@@ -842,7 +841,7 @@ export default function Sections() {
         </div>
       </section>
 
-      {/* 04 / SECTION KONTAK (Desain Eksak Sesuai Gambar 1) */}
+      {/* 05 / SECTION KONTAK (Desain Eksak Sesuai Gambar 1) */}
       <section id="kontak" className="editorial-section section-kontak" aria-label="Kontak dan Kolaborasi">
         <div className="editorial-divider" />
         <div className="section-container">
