@@ -143,7 +143,7 @@ export default function Header({ isReady = false }) {
     <header ref={headerRef} className="editorial-header">
       {/* Bagian Kiri: Navigasi Desktop (01 TENTANG & 02 KARYA) */}
       <nav className="header-nav-left" aria-label="Navigasi Utama">
-        <a href="#tentang" className="nav-link">
+        <a href="#about" className="nav-link">
           <span className="nav-link-num">01</span>
           <span className="nav-link-label">TENTANG</span>
         </a>
@@ -208,7 +208,7 @@ export default function Header({ isReady = false }) {
           </div>
 
           <nav className="mobile-links">
-            <a href="#tentang" className="mobile-link" onClick={closeMobileMenu}>
+            <a href="#about" className="mobile-link" onClick={closeMobileMenu}>
               <span className="mobile-link-num">01</span>
               <span className="mobile-link-text">TENTANG</span>
             </a>

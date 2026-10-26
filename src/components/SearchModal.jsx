@@ -52,7 +52,7 @@ export default function SearchModal({ isOpen, onClose }) {
               <span>Fashion Lookbook</span>
               <ArrowRight size={12} />
             </a>
-            <a href="#tentang" onClick={onClose} className="suggestion-tag">
+            <a href="#about" onClick={onClose} className="suggestion-tag">
               <span>Portrait Story</span>
               <ArrowRight size={12} />
             </a>

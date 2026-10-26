@@ -62,213 +62,451 @@
   will-change: transform;
 }
 
-/* 01 / SECTION TENTANG */
+/* 01 / SECTION ABOUT & JOURNEY */
+.section-anchor-alias {
+  position: absolute;
+  top: -80px;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .section-tentang {
   background-color: rgba(12, 12, 12, 0.02);
 }
 
-.tentang-content-grid {
+/* 1. Tentang Najwan Grid */
+.about-editorial-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 64px;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 72px;
   align-items: start;
+  margin-top: 12px;
 }
 
-.statement-large {
+.about-hero-col {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.about-editorial-headline {
   font-family: var(--font-display);
-  font-size: clamp(1.4rem, 2.5vw, 2.1rem);
-  font-weight: 700;
-  line-height: 1.35;
-  letter-spacing: -0.02em;
+  font-size: clamp(1.8rem, 3.2vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.035em;
   color: var(--text-dark);
-  will-change: transform, opacity;
-}
-
-.tentang-paragraph {
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: var(--text-charcoal);
-  margin-bottom: 32px;
-  will-change: transform, opacity;
-}
-
-.specs-divider {
-  margin-bottom: 24px;
-}
-
-.tentang-specs {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.spec-item {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  transition: transform 0.25s ease, opacity 0.25s ease;
-  will-change: transform, opacity;
-}
-
-.spec-item:hover {
-  transform: translateX(6px);
-}
-
-.spec-label {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  color: var(--text-subtle);
   text-transform: uppercase;
+  margin: 0;
+  will-change: transform, opacity;
 }
 
-.spec-value {
-  font-size: 0.925rem;
-  font-weight: 600;
-  color: var(--text-dark);
+/* Editorial Visual Media Frame */
+.about-visual-frame {
+  background-color: rgba(12, 12, 12, 0.035);
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  padding: 16px;
+  transition: transform 0.4s var(--ease-editorial), box-shadow 0.4s var(--ease-editorial);
+  will-change: transform, opacity;
 }
 
-/* 01.1 / EDUCATION ACCORDION DROPDOWN (Hemat Ruang & Rapi) */
-.education-accordion {
-  margin-top: 48px;
-  border-top: 1px solid var(--border-light);
-  border-bottom: 1px solid var(--border-light);
-  padding: 4px 0;
+.about-visual-frame:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(12, 12, 12, 0.08);
 }
 
-.education-accordion-trigger {
-  width: 100%;
+.about-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  background-color: var(--bg-studio);
+  aspect-ratio: 16 / 9;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 18px 0;
-  background: none;
-  border: none;
-  cursor: pointer;
-  text-align: left;
-  transition: opacity 0.25s ease;
-  color: var(--text-dark);
+  justify-content: center;
 }
 
-.education-accordion-trigger:hover {
-  opacity: 0.8;
+.about-featured-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+  display: block;
+  transition: transform 0.8s var(--ease-editorial);
 }
 
-.education-trigger-left {
+.about-visual-frame:hover .about-featured-img {
+  transform: scale(1.03);
+}
+
+.about-image-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 12px;
+  background-color: rgba(12, 12, 12, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 2px;
+  color: #ffffff;
+  font-family: monospace, var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.about-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent-red);
+  display: inline-block;
+}
+
+.about-image-caption {
   display: flex;
-  align-items: baseline;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 14px;
+  margin-top: 14px;
+  border-top: 1px solid var(--border-light);
   gap: 16px;
   flex-wrap: wrap;
 }
 
-.education-mono-tag {
+.caption-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.caption-tag {
   font-family: monospace, var(--font-body);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   letter-spacing: 0.15em;
   color: var(--text-subtle);
   text-transform: uppercase;
 }
 
-.education-trigger-school {
+.caption-val {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+/* Three Pillars of Najwan */
+.about-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px solid var(--border-light);
+  padding-top: 24px;
+}
+
+.pillar-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 12px 16px;
+  background-color: rgba(12, 12, 12, 0.025);
+  border-left: 2px solid var(--border-medium);
+  border-radius: 0 3px 3px 0;
+  transition: all 0.3s var(--ease-editorial);
+  will-change: transform, opacity;
+}
+
+.pillar-item:hover {
+  border-left-color: var(--accent-red);
+  background-color: rgba(12, 12, 12, 0.045);
+  transform: translateX(4px);
+}
+
+.pillar-num {
+  font-family: monospace, var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-red);
+  letter-spacing: 0.1em;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+
+.pillar-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pillar-label {
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dark);
+}
+
+.pillar-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* Narrative Story Column */
+.about-narrative-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-narrative {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 65ch;
+}
+
+.narrative-paragraph {
+  font-size: 1.05rem;
+  line-height: 1.82;
+  color: var(--text-charcoal);
+  font-weight: 400;
+  will-change: transform, opacity;
+}
+
+.narrative-lead {
+  font-size: 1.15rem;
+  line-height: 1.85;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.music-band {
+  font-weight: 600;
+  color: var(--text-dark);
+  letter-spacing: -0.01em;
+}
+
+/* 2. PENDIDIKAN DAN PERJALANAN (BAGIAN TERPISAH) */
+.journey-section-wrap {
+  margin-top: 104px;
+  padding-top: 88px;
+  position: relative;
+}
+
+.journey-divider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.journey-header {
+  margin-bottom: 48px;
+}
+
+.journey-section-title {
+  font-size: clamp(1.8rem, 3.8vw, 3rem);
+}
+
+.journey-editorial-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 72px;
+  align-items: start;
+}
+
+.journey-left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.journey-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: var(--text-dark);
+  text-transform: uppercase;
+  margin: 0;
+  will-change: transform, opacity;
+}
+
+/* Supporting Education Milestone Track */
+.journey-path-card {
+  background-color: rgba(12, 12, 12, 0.025);
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  padding: 32px 28px;
+}
+
+.journey-path-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.path-indicator-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--accent-red);
+}
+
+.path-kicker {
+  font-family: monospace, var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  color: var(--text-subtle);
+  text-transform: uppercase;
+}
+
+.journey-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.journey-step-item {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+  will-change: transform, opacity;
+}
+
+.step-bullet-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 32px;
+  flex-shrink: 0;
+}
+
+.step-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace, var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  background-color: var(--bg-studio);
+  flex-shrink: 0;
+}
+
+.step-num-current {
+  border-color: var(--accent-red);
+  color: var(--accent-red);
+  background-color: rgba(209, 44, 38, 0.06);
+}
+
+.step-line {
+  width: 1px;
+  flex-grow: 1;
+  background-color: var(--border-light);
+  margin: 8px 0;
+  min-height: 52px;
+}
+
+.step-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 3px;
+}
+
+.step-level {
+  font-family: monospace, var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  color: var(--text-subtle);
+  text-transform: uppercase;
+}
+
+.step-title {
   font-family: var(--font-display);
   font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: -0.01em;
   color: var(--text-dark);
+  margin: 2px 0 6px;
 }
 
-.education-trigger-period {
-  font-family: var(--font-body);
-  font-size: 0.825rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  letter-spacing: 0.05em;
-}
-
-.education-trigger-right {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--text-muted);
-}
-
-.education-trigger-state {
-  font-family: monospace, var(--font-body);
-  font-size: 0.7rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-}
-
-.education-chevron {
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.education-chevron.is-rotated {
-  transform: rotate(180deg);
-}
-
-.education-accordion-body {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
-}
-
-.education-accordion-body.is-open {
-  max-height: 320px;
-  opacity: 1;
-}
-
-.education-accordion-inner {
-  padding: 8px 0 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.education-expanded-major {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.education-major-val {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--accent-red);
-  letter-spacing: 0.02em;
-}
-
-.education-expanded-desc {
-  font-size: 1rem;
-  line-height: 1.65;
+.step-desc {
+  font-size: 0.92rem;
+  line-height: 1.62;
   color: var(--text-charcoal);
-  max-width: 850px;
 }
 
-.education-expanded-tags {
+/* Journey Narrative & Philosophy Quote */
+.journey-right-col {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 6px;
+  flex-direction: column;
 }
 
-.skill-pill {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  padding: 5px 12px;
-  border: 1px solid var(--border-medium);
-  border-radius: 99px;
+.journey-narrative {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 65ch;
+}
+
+.journey-quote-box {
+  position: relative;
+  margin-top: 16px;
+  padding: 24px 28px 24px 32px;
+  background-color: rgba(12, 12, 12, 0.035);
+  border-left: 3px solid var(--accent-red);
+  border-radius: 0 4px 4px 0;
+  will-change: transform, opacity;
+}
+
+.quote-mark {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  line-height: 1;
+  color: rgba(209, 44, 38, 0.22);
+  pointer-events: none;
+}
+
+.quote-text {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-style: italic;
+  line-height: 1.65;
   color: var(--text-dark);
-  background-color: rgba(12, 12, 12, 0.03);
-  transition: all 0.25s ease;
+  font-weight: 600;
+  margin: 0;
 }
 
-.skill-pill:hover {
-  border-color: var(--text-dark);
-  background-color: rgba(12, 12, 12, 0.08);
+.quote-author {
+  display: block;
+  margin-top: 12px;
+  font-family: monospace, var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  color: var(--text-subtle);
+  text-transform: uppercase;
 }
 
 /* 02 / KARYA FULLSCREEN SECTION */
@@ -577,10 +815,15 @@
   .editorial-section {
     padding: 70px 24px;
   }
-  .tentang-content-grid,
+  .about-editorial-grid,
+  .journey-editorial-grid,
   .kontak-minimal-grid {
     grid-template-columns: 1fr;
     gap: 48px;
+  }
+  .journey-section-wrap {
+    margin-top: 64px;
+    padding-top: 56px;
   }
   .karya-header-overlay {
     top: 32px;
@@ -612,7 +855,24 @@
   .driftwall-stage {
     height: 420px;
   }
-  .education-trigger-left {
-    gap: 8px;
+  .about-editorial-headline,
+  .journey-headline {
+    font-size: 1.6rem;
+  }
+  .narrative-paragraph {
+    font-size: 0.98rem;
+    line-height: 1.72;
+  }
+  .narrative-lead {
+    font-size: 1.05rem;
+  }
+  .journey-path-card {
+    padding: 22px 18px;
+  }
+  .journey-quote-box {
+    padding: 20px 20px 20px 24px;
+  }
+  .quote-text {
+    font-size: 0.95rem;
   }
 }
