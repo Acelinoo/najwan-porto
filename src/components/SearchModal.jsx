@@ -48,12 +48,8 @@ export default function SearchModal({ isOpen, onClose }) {
               <span>Perjalanan</span>
               <ArrowRight size={12} />
             </a>
-            <a href="#karya" onClick={onClose} className="suggestion-tag">
-              <span>Seri Foto Terpilih</span>
-              <ArrowRight size={12} />
-            </a>
-            <a href="#arsip" onClick={onClose} className="suggestion-tag">
-              <span>Arsip Visual</span>
+            <a href="#kontak" onClick={onClose} className="suggestion-tag">
+              <span>Kontak & Kolaborasi</span>
               <ArrowRight size={12} />
             </a>
           </div>

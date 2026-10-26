@@ -54,7 +54,7 @@ export default function App() {
         {/* 5. Hero Section with Masked Typography, Depth Layering, & Parallax */}
         <Hero isReady={isReady} />
 
-        {/* 6. Editorial Content Sections (Tentang, Karya WebGL, Arsip Drift, Footer) */}
+        {/* 6. Editorial Content Sections (Tentang, Perjalanan, Kontak) */}
         <Sections />
       </main>
     </div>

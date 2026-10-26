@@ -40,15 +40,9 @@ export default function CustomCursor() {
       const target = e.target;
       if (!target) return;
 
-      const isCarousel = target.closest?.('.flex-carousel') || target.closest?.('#karya');
-      const isDriftWall = target.closest?.('.driftwall-stage') || target.closest?.('#arsip');
       const isInteractive = target.closest?.('a, button, input, textarea, [role="button"], .header-icon-btn, .spec-item');
 
-      if (isCarousel) {
-        setCursorType('drag');
-      } else if (isDriftWall) {
-        setCursorType('explore');
-      } else if (isInteractive) {
+      if (isInteractive) {
         setCursorType('hover');
       } else {
         setCursorType('default');

@@ -141,7 +141,7 @@ export default function Header({ isReady = false }) {
 
   return (
     <header ref={headerRef} className="editorial-header">
-      {/* Bagian Kiri: Navigasi Desktop (01 TENTANG & 02 KARYA) */}
+      {/* Bagian Kiri: Navigasi Desktop (01 TENTANG, 02 PERJALANAN, 03 KONTAK) */}
       <nav className="header-nav-left" aria-label="Navigasi Utama">
         <a href="#about" className="nav-link">
           <span className="nav-link-num">01</span>
@@ -151,16 +151,8 @@ export default function Header({ isReady = false }) {
           <span className="nav-link-num">02</span>
           <span className="nav-link-label">PERJALANAN</span>
         </a>
-        <a href="#karya" className="nav-link">
-          <span className="nav-link-num">03</span>
-          <span className="nav-link-label">KARYA</span>
-        </a>
-        <a href="#arsip" className="nav-link">
-          <span className="nav-link-num">04</span>
-          <span className="nav-link-label">ARSIP</span>
-        </a>
         <a href="#kontak" className="nav-link">
-          <span className="nav-link-num">05</span>
+          <span className="nav-link-num">03</span>
           <span className="nav-link-label">KONTAK</span>
         </a>
       </nav>
@@ -220,16 +212,8 @@ export default function Header({ isReady = false }) {
               <span className="mobile-link-num">02</span>
               <span className="mobile-link-text">PERJALANAN</span>
             </a>
-            <a href="#karya" className="mobile-link" onClick={closeMobileMenu}>
-              <span className="mobile-link-num">03</span>
-              <span className="mobile-link-text">KARYA</span>
-            </a>
-            <a href="#arsip" className="mobile-link" onClick={closeMobileMenu}>
-              <span className="mobile-link-num">04</span>
-              <span className="mobile-link-text">ARSIP</span>
-            </a>
             <a href="#kontak" className="mobile-link" onClick={closeMobileMenu}>
-              <span className="mobile-link-num">05</span>
+              <span className="mobile-link-num">03</span>
               <span className="mobile-link-text">KONTAK</span>
             </a>
           </nav>
